@@ -1,52 +1,76 @@
-# Battery Fundamentals
+# AegisCAN Week 2 — Battery Fundamentals
 
 ## 1. Introduction
 
-Electric Vehicles (EVs) use rechargeable battery systems to store and supply electrical energy to the vehicle. The battery system is made up of cells, modules, a battery pack, and a Battery Management System (BMS).
+Electric Vehicles (EVs) use high-voltage battery packs as their primary energy source. The battery system must be continuously monitored and controlled to ensure safe and efficient vehicle operation.
 
-Understanding battery fundamentals is important for AegisCAN because battery and BMS information can be communicated through the vehicle CAN network.
+AegisCAN focuses on cybersecurity monitoring of vehicle communication networks. Understanding battery parameters is important because battery-related information is commonly exchanged between the Battery Management System (BMS) and other vehicle Electronic Control Units (ECUs) through the CAN network.
+
+This document covers the fundamental battery concepts required for the AegisCAN project.
 
 ---
 
 ## 2. Battery Cell
 
-A battery cell is the basic electrochemical unit used to store and release electrical energy.
+A battery cell is the basic electrochemical unit of a battery.
 
-Multiple cells can be connected together to achieve the required voltage and capacity.
+A typical lithium-ion cell has a nominal voltage of approximately 3.6–3.7 V.
+
+Important cell parameters include:
+
+- Voltage
+- Current
+- Capacity
+- Temperature
+- State of Charge (SOC)
+- State of Health (SOH)
 
 ---
 
 ## 3. Battery Module
 
-A battery module is a group of multiple battery cells connected together.
+A battery module is a group of individual cells connected together.
 
-Modules help organize and manage a large number of cells inside an EV battery system.
+Cells can be connected in:
 
-### Basic structure
+- Series
+- Parallel
+- Series-parallel combinations
 
-Cell → Module
+Modules provide a higher voltage and/or capacity than a single cell.
 
 ---
 
 ## 4. Battery Pack
 
-A battery pack is a larger battery assembly consisting of multiple battery modules.
+A battery pack consists of multiple battery modules connected together.
 
-The complete battery pack supplies the electrical energy required by the EV.
+An EV battery pack typically contains:
 
-### Basic structure
+- Multiple cells
+- Battery modules
+- Battery Management System (BMS)
+- Temperature sensors
+- Voltage monitoring circuits
+- Current sensors
+- Contactors
+- Protection systems
 
-Cell → Module → Pack
+The complete battery pack supplies electrical energy to the vehicle powertrain.
 
 ---
 
-## 5. Voltage
+## 5. Series Connection
 
-Voltage is the electrical potential difference of a battery.
+When battery cells are connected in series:
 
-It is measured in volts (V).
+- Voltage increases
+- Capacity remains approximately the same
 
-Example:
+For example, three 3.7 V, 2 Ah cells connected in series:
 
 ```text
-Battery Voltage = 400 V
+Voltage = 3.7 + 3.7 + 3.7
+        = 11.1 V
+
+Capacity = 2 Ah

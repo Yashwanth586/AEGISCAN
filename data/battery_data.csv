@@ -1,0 +1,6 @@
+Voltage_V,Current_A,Temperature_C,SOC_percent,SOH_percent
+400,50,32,75,98
+398,52,33,73,98
+402,48,34,71,97
+401,51,32,69,97
+399,49,35,67,96

@@ -1,44 +1,38 @@
+
+from pathlib import Path
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# Project root and output directory
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DATA_FILE = PROJECT_ROOT / "data" / "battery_data.csv"
+PLOT_DIR = PROJECT_ROOT / "outputs" / "plots"
+PLOT_DIR.mkdir(parents=True, exist_ok=True)
+
 # Load battery data
-df = pd.read_csv("data/battery_data.csv")
+df = pd.read_csv(DATA_FILE)
+df["Time_s"] = range(len(df))
 
-# Create time/sample values
-df["Time_s"] = [0, 1, 2, 3, 4]
+# Plot definitions
+plots = [
+    ("Voltage_V", "Voltage (V)", "Battery Voltage vs Time", "battery_voltage.png"),
+    ("Current_A", "Current (A)", "Battery Current vs Time", "battery_current.png"),
+    ("SOC_percent", "SOC (%)", "Battery SOC vs Time", "battery_soc.png"),
+    ("Temperature_C", "Temperature (°C)", "Battery Temperature vs Time", "battery_temperature.png"),
+]
 
-# Voltage vs Time
-plt.figure()
-plt.plot(df["Time_s"], df["Voltage_V"], marker="o")
-plt.xlabel("Time (s)")
-plt.ylabel("Voltage (V)")
-plt.title("Battery Voltage vs Time")
-plt.grid(True)
-plt.show()
+# Generate and save all plots
+for column, ylabel, title, filename in plots:
+    plt.figure(figsize=(8, 5))
+    plt.plot(df["Time_s"], df[column], marker="o")
+    plt.xlabel("Time (s)")
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(PLOT_DIR / filename, dpi=150)
+    plt.show()
+    plt.close()
 
-# Current vs Time
-plt.figure()
-plt.plot(df["Time_s"], df["Current_A"], marker="o")
-plt.xlabel("Time (s)")
-plt.ylabel("Current (A)")
-plt.title("Battery Current vs Time")
-plt.grid(True)
-plt.show()
-
-# SOC vs Time
-plt.figure()
-plt.plot(df["Time_s"], df["SOC_percent"], marker="o")
-plt.xlabel("Time (s)")
-plt.ylabel("SOC (%)")
-plt.title("Battery SOC vs Time")
-plt.grid(True)
-plt.show()
-
-# Temperature vs Time
-plt.figure()
-plt.plot(df["Time_s"], df["Temperature_C"], marker="o")
-plt.xlabel("Time (s)")
-plt.ylabel("Temperature (°C)")
-plt.title("Battery Temperature vs Time")
-plt.grid(True)
-plt.show()
+print(f"All four battery plots saved to: {PLOT_DIR}")

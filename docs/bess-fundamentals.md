@@ -1,71 +1,26 @@
-# AegisCAN Week 3 — BESS Fundamentals
 
-## 1. Introduction
+BATTERY RACK
+     |
+     v
+BMS - MONITORING AND PROTECTION
+     |
+     v
+DC BATTERY BUS
+     |
+     v
+PCS - POWER CONVERSION
+     |
+     v
+AC BUS
+  /     \
+ v       v
+GRID    LOAD
 
-BESS stands for Battery Energy Storage System.
+EMS - ENERGY MANAGEMENT
+Coordinates system operation
 
-A BESS is a complete energy-storage system that combines battery racks with battery management, power conversion, energy management, thermal management, monitoring, and protection systems.
+THERMAL MANAGEMENT
+Cooling, heating, temperature control
 
-BESS systems are used in applications such as:
-
-- Renewable energy storage
-- Grid energy storage
-- Backup power
-- Peak-load management
-- Energy arbitrage
-- Industrial energy management
-
----
-
-## 2. BESS Architecture
-
-A simplified BESS architecture is:
-
-```text
-                 ┌─────────────────────┐
-                 │    Battery Rack     │
-                 │  Battery Modules    │
-                 └──────────┬──────────┘
-                            │
-                            ▼
-                 ┌─────────────────────┐
-                 │        BMS          │
-                 │ Monitoring & Safety │
-                 └──────────┬──────────┘
-                            │
-                    DC Battery Bus
-                            │
-                            ▼
-                 ┌─────────────────────┐
-                 │        PCS          │
-                 │ Power Conversion    │
-                 └──────────┬──────────┘
-                            │
-                         AC Bus
-                            │
-                 ┌──────────┴──────────┐
-                 ▼                     ▼
-             AC Grid                 Load
-
-
-        ┌──────────────────────────────┐
-        │             EMS              │
-        │    Energy Management System  │
-        └──────────────┬───────────────┘
-                       │
-             Control / Monitoring
-
-
-        ┌──────────────────────────────┐
-        │      Thermal Management      │
-        │       Cooling / Heating      │
-        └──────────────┬───────────────┘
-                       │
-                Temperature Control
-
-
-        ┌──────────────────────────────┐
-        │          Monitoring          │
-        │ Voltage / Current / Temp.    │
-        │ SOC / SOH / Power / Faults   │
-        └──────────────────────────────┘
+MONITORING
+Voltage, current, SOC, SOH, faults

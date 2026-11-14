@@ -1,0 +1,5 @@
+Timestamp_s,CAN_ID,Voltage_V,Current_A,SOC_percent,SOH_percent,Temperature_C,Fault_Code,Contactor,Balancing,Health_Fault_Code
+0.0,0x180,400.0,50.0,,,,,,,
+0.01,0x200,,,75.0,98.0,,,,,
+0.02,0x300,,,,,32.0,0.0,,,
+0.03,0x400,,,,,,,CLOSED,INACTIVE,0.0
